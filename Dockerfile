@@ -16,6 +16,6 @@ COPY . .
 # Exponer el puerto de FastAPI
 EXPOSE 8000
 
-# Comando para arrancar la API.
+# Comando que se ejecutará cuando llamemos a "docker run".
 # "app" se refiere a la variable "app", podría ser una instancia de la clase FastAPI.
-CMD ["uvicorn", "nombre_del_script:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "inferencia_lstm_fastapi:predict", "--host", "0.0.0.0", "--port", "8000"]
