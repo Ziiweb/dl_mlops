@@ -17,13 +17,6 @@ LOCAL
 
 
 
-A continuación, será necesario installar lo siguiente en un **entorno virtual** a ser posible:
-
-
-uvicorn: `pip install uvicorn`
-
-Ahora podemos arrancar el contenedor ahora usando `sudo docker run -p 8000:8000 mi-modelo-api`.
-
 
 
 
