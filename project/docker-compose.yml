@@ -4,6 +4,8 @@ services:
   api:
     build:
       context: ./api
+    env_file: 
+      - .env
     ports:
       - "8001:8000"
     networks:
