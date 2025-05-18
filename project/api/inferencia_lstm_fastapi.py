@@ -16,7 +16,7 @@ from torch import nn
 api = wandb.Api()
 
 # Definir el nombre del artefacto y usuario/proyecto
-artifact_path = os.getenv("WANDB_ARTIFACT_PATH", "https://wandb.ai/javiergarpe1979-upm/dl_mlops/house_price_model:v0")
+artifact_path = os.getenv("WANDB_ARTIFACT_PATH", "javiergarpe1979-upm/dl_mlops/forecasting_temperature:v0")
 
 # Descargar artefacto
 artifact = api.artifact(artifact_path, type="model")
@@ -88,6 +88,9 @@ class InputSequence(BaseModel):
 
 @app.post("/predict")
 def predict(input_seq: InputSequence):
+
+    print(input_seq)
+
     try:
         input_array = np.array(input_seq.data)
         if input_array.shape != (SEQ_LEN_IN, 6):
