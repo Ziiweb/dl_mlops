@@ -6,13 +6,12 @@ app = Flask(__name__)
 
 # Configuración de la URL base de la API
 # Se puede configurar a través de variables de entorno (Docker) o por defecto localhost:8000 (se ejecuta sin Docker)
-API_HOST = os.environ.get("API_HOST", "localhost")
+API_HOST = os.environ.get("API_HOST", "api")
 API_PORT = os.environ.get("API_PORT", "8000")
 API_URL = f"http://{API_HOST}:{API_PORT}/predict"
 
 # Puerto de la aplicación web
-WEB_APP_PORT = os.environ.get("WEB_APP_PORT", "8001")
-
+WEB_APP_PORT = int(os.environ.get("WEB_APP_PORT", "8001"))
 
 @app.route("/", methods=["GET"])
 def index():
@@ -20,7 +19,9 @@ def index():
     return render_template("index.html")
 
 @app.route("/predict_temperature", methods=["POST"])
-def predict_price():
+
+def predict_temperature():
+
     # Recogemos los datos del formulario
     feature_AA = request.form.get("feature_AA")
     feature_AB = request.form.get("feature_AB")
@@ -40,14 +41,19 @@ def predict_price():
     }
 
     # Hacemos la petición POST a la API
-    response = requests.post(API_URL, json=payload)
-    
-    if response.status_code == 200:
+    try:
+        response = requests.post(API_URL, json=payload)
+        response.raise_for_status()
         data = response.json()
-        predicted_price = data["predicted_price"]
-        return f"El precio estimado de la casa es: {predicted_price:.2f}"
-    else:
-        return "Error en la API. No se pudo obtener la predicción."
+        predicted_temperature = data.get("predicted_temperature", None)
+
+        if predicted_temperature is not None:
+            return f"La temperatura estimada es: {predicted_temperature:.2f}°C"
+        else:
+            return "La respuesta de la API no contiene la temperatura estimada."
+
+    except requests.exceptions.RequestException as e:
+        return f"Error en la conexión con la API: {e}"
 
 if __name__ == "__main__":
     # Ejecutar la aplicación web en el puerto especificado

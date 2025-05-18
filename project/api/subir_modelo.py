@@ -4,7 +4,6 @@ import wandb
 run = wandb.init(project="dl_mlops")
 
 artifact_filepath = Path("./quantile_lstm_checkpoint.pth")
-artifact_filepath.write_text("simulated model file")
   
 logged_artifact = run.log_artifact(
   artifact_filepath,

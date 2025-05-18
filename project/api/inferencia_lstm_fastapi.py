@@ -90,7 +90,7 @@ class InputSequence(BaseModel):
 def predict(input_seq: InputSequence):
 
     print(input_seq)
-
+ 
     try:
         input_array = np.array(input_seq.data)
         if input_array.shape != (SEQ_LEN_IN, 6):

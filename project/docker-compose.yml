@@ -11,14 +11,14 @@ services:
     networks:
       - app-network
 
-  frontend:
+  web:
     build:
       context: ./frontend
     ports:
       - "8000:8000"
     depends_on:
       - api
-    networks:
+    networks:              
       - app-network
 
 networks:

@@ -16,7 +16,10 @@ LOCAL
 
 Como vemos, en el comando pasamos como parametro el nombre de la imágenes que creamos: `mi-model-api` y `web_app`. Al construir la imágenes, en realidad lo que hacemos es ejecutar las lineas presentes en los archivos Dockerfile respectivos, por ejemplo la linea `RUN pip install --no-cache-dir -r requirements.txt` que instala los paquetes indicados en los archivos `requirements.txt`. 
 
-5. Comprueba que las imágenes se ha creado ejecutando `sudo docker images -a`. OJO: aunque aparezcan en la lista, no quiere decir que estén <em>corriendo</em>. Ahora los contenedores están listos para ejecutarse llamando a `run`. Si quisieses borrar alguna de las imágenes creadas ejecuta `sudo docker rmi -f <id de la imagen>` y `sudo docker system prune -a`.    
+5. Comprueba que las imágenes se ha creado ejecutando `sudo docker images -a`. OJO: aunque aparezcan en la lista, no quiere decir que estén <em>corriendo</em>. Ahora los contenedores están listos para ejecutarse llamando a `run`. Si quisieses borrar alguna de las imágenes creadas ejecuta:
+
+    - `sudo docker-compose down --volumes --remove-orphans`
+    - `sudo docker system prune -af`
 
 5. Hacemos **accesibles** las imágenes desde el navegador con: 
 
