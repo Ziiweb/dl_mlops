@@ -1,6 +1,6 @@
 # dl_mlops
 
-LOCAL
+**LOCAL**
 
 0. Instala docker.
 
