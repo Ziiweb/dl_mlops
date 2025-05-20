@@ -10,6 +10,12 @@ services:
       - "8001:8000"
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]  # O alguna ruta que devuelva 200 OK
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
 
   web:
     build:
@@ -19,6 +25,21 @@ services:
     depends_on:
       - api
     networks:              
+      - app-network
+
+
+  test:
+    build:
+      context: ./test
+      dockerfile: Dockerfile
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      API_HOST: api
+      API_PORT: 8000
+    command: ["python", "test_cvae_api.py"]
+    networks:
       - app-network
 
 networks:

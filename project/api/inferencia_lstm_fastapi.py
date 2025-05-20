@@ -104,3 +104,8 @@ async def predict(request: Request):
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
