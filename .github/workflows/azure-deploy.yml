@@ -1,0 +1,31 @@
+name: Deploy API to Azure Web App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build and push Docker image to ACR
+        run: |
+          az acr build --registry pruebaregistri --image cvae-api:${{ github.sha }} ./project/api
+
+      - name: Deploy Web App for Containers
+        run: |
+          az webapp create --resource-group Prueba --plan miAppServicePlan --name <TU_WEBAPP_NAME> --deployment-container-image-name pruebaregistri.azurecr.io/cvae-api:${{ github.sha }} || echo "App already exists"
+          az webapp config container set --name miWebApp --resource-group Prueba --docker-custom-image-name <TU_ACR_NAME>.azurecr.io/cvae-api:${{ github.sha }} --docker-registry-server-url https://<TU_ACR_NAME>.azurecr.io
+
+      - name: Restart Web App
+        run: az webapp restart --name miWebApp --resource-group Prueba
