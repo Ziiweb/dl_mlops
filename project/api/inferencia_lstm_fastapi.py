@@ -66,6 +66,9 @@ class Input(BaseModel):
     label: int  # número del 0 al 9
 
 # === Carga de modelo desde wandb ===
+# El token para el ___LOGIN___ se puede estar cogiendo de el archivo "Dockerfile", el cual hace referencia a un
+# archivo .env donde esta WANDB_API_KEY, PERO OJO no estoy seguro de que esto sea así, a lo mejor se esta cogiendo
+# porque he hecho lo del "export" en la terminal.
 api = wandb.Api()
 artifact_path = os.getenv("WANDB_ARTIFACT_PATH", "javiergarpe1979-upm/dl_mlops/cvae_model:latest")
 artifact = api.artifact(artifact_path, type="model")

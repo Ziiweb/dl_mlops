@@ -8,34 +8,45 @@ LOCAL
 
 2. Si no estuviese activo, arráncalo a través de `sudo systemctl enable docker`.
 
-3. Creamos una archivo de entorno `.env`.
+3. Creamos una archivo de entorno `.env` con este contenido:
 
-4. **Construimos la imágenes** y **creamos los contenedores** usando 
-    
-    - `sudo docker-compose up --build`
-
-Como vemos, en el comando pasamos como parametro el nombre de la imágenes que creamos: `mi-model-api` y `web_app`. Al construir la imágenes, en realidad lo que hacemos es ejecutar las lineas presentes en los archivos Dockerfile respectivos, por ejemplo la linea `RUN pip install --no-cache-dir -r requirements.txt` que instala los paquetes indicados en los archivos `requirements.txt`. 
-
-5. Comprueba que las imágenes se ha creado ejecutando `sudo docker images -a`. OJO: aunque aparezcan en la lista, no quiere decir que estén <em>corriendo</em>. Ahora los contenedores están listos para ejecutarse llamando a `run`. Si quisieses borrar alguna de las imágenes creadas ejecuta:
-
-    - `sudo docker-compose down --volumes --remove-orphans`
-    - `sudo docker system prune -af`
-
-5. Hacemos **accesibles** las imágenes desde el navegador con: 
-
-    - `sudo docker run -p 8000:8000 mi-modelo-api`
-    - `sudo docker run -p 8001:8000 web_app`
-
-Como vemos, hacemos uso de diferentes puertos para cada contenedor: 8000 y 8001.
-
-6. Comprobamos que los contenedores estan corriendo a través de `sudo docker ps`.
+`WANDB_API_KEY=tu_token_de_login_a_wandb`
 
 
-
-### SUBIR MODELO A WANDB
-
-Para subir el modelo a Wandb como un artefacto vamos a ejecutar `project/api/subir_modelo.py`.
+4. Para subir el modelo a Wandb como un artefacto vamos a ejecutar `project/api/subir_modelo.py`.
 
 A continuación podemos comprobar que le modelo se ha subido a través de la interfaz de Wandb.
 
+
+5. **Construimos la imágenes** y **creamos los contenedores** usando 
+    
+    - `sudo docker-compose up --build`
+
+**OJO**: si no es la primera vez que ejecutas esa linea quizás sea necesario que ejecutes antes `sudo docker-compose down --volumes --remove-orphans`.
+
+Justo despues verás la siguiente salida:
+
+```
+Creating network "project_app-network" with driver "bridge"
+Creating project_api_1 ... done
+Creating project_web_1 ... done
+Attaching to project_api_1, project_web_1
+web_1  |  * Serving Flask app 'web_app'
+web_1  |  * Debug mode: on
+web_1  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+web_1  |  * Running on all addresses (0.0.0.0)
+web_1  |  * Running on http://127.0.0.1:8001
+web_1  |  * Running on http://172.18.0.3:8001
+web_1  | Press CTRL+C to quit
+web_1  |  * Restarting with stat
+web_1  |  * Debugger is active!
+web_1  |  * Debugger PIN: 892-166-819
+wandb:   3 of 3 files downloaded.  loaded...
+api_1  | INFO:     Started server process [1]
+api_1  | INFO:     Waiting for application startup.
+api_1  | INFO:     Application startup complete.
+api_1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
+Puedes hacer ctrl+click sobre `http://172.18.0.3:8001` y se abrirá el navegador con un formulario.
 
