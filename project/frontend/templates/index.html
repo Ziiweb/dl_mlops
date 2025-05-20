@@ -67,29 +67,13 @@
 
 <body>
     <div class="container">
-        <h1>¡Acho, predice el precio la temperatura</h1>
+        <h1>¡Acho, genera una imagen del número</h1>
         <form action="/predict_temperature" method="POST">
 
-            <label>Feature AA:</label>
-            <input type="number" step="any" name="feature_AA" required>
+            <label>Número del 0 al 9:</label>
+            <input type="number" name="number_to_generate" required>
 
-            <label>Feature AB:</label>
-            <input type="number" step="any" name="feature_AB" required>
-
-            <label>Feature BA:</label>
-            <input type="number" step="any" name="feature_BA" required>
-
-            <label>Feature BB:</label>
-            <input type="number" step="any" name="feature_BB" required>
-
-            <label>Feature CA:</label>
-            <input type="number" step="any" name="feature_CA" required>
-
-            <label>Feature CB:</label>
-            <input type="number" step="any" name="feature_CB" required>
-            
-
-            <input type="submit" value="Predecir Precio">
+            <input type="submit" value="Generar imagen">
         </form>
     </div>
 </body>

@@ -1,0 +1,42 @@
+{
+  "os": "Linux-6.11.0-25-generic-x86_64-with-glibc2.39",
+  "python": "CPython 3.12.3",
+  "startedAt": "2025-05-19T19:20:10.766642Z",
+  "program": "/home/tirengarfio/Downloads/dl_mlops/project/api/PRACTICA_DL_GARCIA_JAVIER.ipynb",
+  "codePath": "project/api/PRACTICA_DL_GARCIA_JAVIER.ipynb",
+  "git": {
+    "remote": "https://github.com/Ziiweb/dl_mlops.git",
+    "commit": "e6594e764a0a71ecf253d772f814a33c30c767dc"
+  },
+  "email": "javiergarpe1979@gmail.com",
+  "root": "/home/tirengarfio/Downloads/dl_mlops/project/api",
+  "host": "lenovo",
+  "executable": "/home/tirengarfio/Downloads/dl_mlops/bin/python",
+  "codePathLocal": "PRACTICA_DL_GARCIA_JAVIER.ipynb",
+  "cpu_count": 4,
+  "cpu_count_logical": 8,
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "176257466368",
+      "used": "104175513600"
+    }
+  },
+  "memory": {
+    "total": "16619016192"
+  },
+  "cpu": {
+    "count": 4,
+    "countLogical": 8
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce GTX 1050",
+      "memoryTotal": "4294967296",
+      "cudaCores": 640,
+      "architecture": "Pascal"
+    }
+  ],
+  "cudaVersion": "12.8"
+}

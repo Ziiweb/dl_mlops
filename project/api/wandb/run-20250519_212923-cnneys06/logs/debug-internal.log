@@ -1,0 +1,16 @@
+{"time":"2025-05-19T21:29:25.298677656+02:00","level":"INFO","msg":"stream: starting","core version":"0.19.11","symlink path":"/home/tirengarfio/Downloads/dl_mlops/project/api/wandb/run-20250519_212923-cnneys06/logs/debug-core.log"}
+{"time":"2025-05-19T21:29:25.731585533+02:00","level":"INFO","msg":"created new stream","id":"cnneys06"}
+{"time":"2025-05-19T21:29:25.731697348+02:00","level":"INFO","msg":"stream: started","id":"cnneys06"}
+{"time":"2025-05-19T21:29:25.731902048+02:00","level":"INFO","msg":"writer: Do: started","stream_id":"cnneys06"}
+{"time":"2025-05-19T21:29:25.731957492+02:00","level":"INFO","msg":"sender: started","stream_id":"cnneys06"}
+{"time":"2025-05-19T21:29:25.73200678+02:00","level":"INFO","msg":"handler: started","stream_id":"cnneys06"}
+{"time":"2025-05-19T21:29:26.167358718+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-05-19T21:29:26.594742385+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-05-19T21:29:26.5948041+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-05-19T21:29:27.559720476+02:00","level":"INFO","msg":"handler: operation stats","stats":{"operations":[{"desc":"uploading artifact cvae_model","runtime_seconds":0.787974124}],"total_operations":1}}
+{"time":"2025-05-19T21:29:30.019424573+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-05-19T21:29:30.210950629+02:00","level":"INFO","msg":"stream: closing","id":"cnneys06"}
+{"time":"2025-05-19T21:29:30.210999332+02:00","level":"INFO","msg":"handler: closed","stream_id":"cnneys06"}
+{"time":"2025-05-19T21:29:30.211022718+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":"cnneys06"}
+{"time":"2025-05-19T21:29:30.21109069+02:00","level":"INFO","msg":"sender: closed","stream_id":"cnneys06"}
+{"time":"2025-05-19T21:29:30.211207273+02:00","level":"INFO","msg":"stream: closed","id":"cnneys06"}

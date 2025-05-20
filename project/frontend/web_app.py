@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
 import requests
 import os
+import base64
+import io
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 
@@ -18,42 +21,47 @@ def index():
     # Renderiza un formulario HTML
     return render_template("index.html")
 
+import base64
+import io
+import matplotlib.pyplot as plt
+import numpy as np
+from markupsafe import Markup
+
 @app.route("/predict_temperature", methods=["POST"])
-
 def predict_temperature():
+    numero = request.form.get("number_to_generate")
 
-    # Recogemos los datos del formulario
-    feature_AA = request.form.get("feature_AA")
-    feature_AB = request.form.get("feature_AB")
-    feature_BA = request.form.get("feature_BA")
-    feature_BB = request.form.get("feature_BB")
-    feature_CA = request.form.get("feature_CA")
-    feature_CB = request.form.get("feature_CB")
-
-    # Construimos la carga en JSON para la API
     payload = {
-        "feature_AA": float(feature_AA),
-        "feature_AB": float(feature_AB),
-        "feature_BA": float(feature_BA),
-        "feature_BB": float(feature_BB),
-        "feature_CA": float(feature_CA),
-        "feature_CB": float(feature_CB),
+        "label": int(numero),
     }
 
-    # Hacemos la petición POST a la API
     try:
         response = requests.post(API_URL, json=payload)
         response.raise_for_status()
         data = response.json()
-        predicted_temperature = data.get("predicted_temperature", None)
 
-        if predicted_temperature is not None:
-            return f"La temperatura estimada es: {predicted_temperature:.2f}°C"
+        if "image" in data:
+            image_array = np.array(data["image"])
+
+            # Convertir matriz a imagen PNG en base64
+            fig, ax = plt.subplots()
+            ax.imshow(image_array, cmap="gray")
+            ax.axis('off')
+            buf = io.BytesIO()
+            plt.savefig(buf, format='png')
+            buf.seek(0)
+            image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+            plt.close(fig)
+
+            img_html = f'<img src="data:image/png;base64,{image_base64}" alt="Imagen generada">'
+            return f"<h2>Imagen generada para el número {numero}</h2>{Markup(img_html)}"
         else:
-            return "La respuesta de la API no contiene la temperatura estimada."
+            return "La respuesta de la API no contiene una imagen generada."
 
     except requests.exceptions.RequestException as e:
         return f"Error en la conexión con la API: {e}"
+
+
 
 if __name__ == "__main__":
     # Ejecutar la aplicación web en el puerto especificado

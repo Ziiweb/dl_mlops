@@ -18,4 +18,4 @@ EXPOSE 8000
 
 # Comando que se ejecutará cuando llamemos a "docker run".
 # "app" se refiere a la variable "app", podría ser una instancia de la clase FastAPI.
-CMD ["uvicorn", "inferencia_lstm_fastapi:predict", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "inferencia_lstm_fastapi:app", "--host", "0.0.0.0", "--port", "8000"]
