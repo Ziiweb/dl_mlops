@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build API Docker image
-        run: docker build ./api --file ./project/api/Dockerfile --tag api-image:$(date +%s)
+        run: docker build ./project/api --file ./project/api/Dockerfile --tag api-image:$(date +%s)
 
   build_frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Build Frontend Docker image
-        run: docker build ./frontend --file ./project/frontend/Dockerfile --tag frontend-image:$(date +%s)
+        run: docker build ./project/frontend --file ./project/frontend/Dockerfile --tag frontend-image:$(date +%s)
