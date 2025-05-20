@@ -7,17 +7,16 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build_api:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Build API Docker image
-      run: docker build ./api --file ./api/Dockerfile --tag api-image:$(date +%s)
+      - uses: actions/checkout@v4
+      - name: Build API Docker image
+        run: docker build ./api --file ./api/Dockerfile --tag api-image:$(date +%s)
 
   build_frontend:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Build Frontend Docker image
-      run: docker build ./frontend --file ./frontend/Dockerfile --tag frontend-image:$(date +%s)
+      - uses: actions/checkout@v4
+      - name: Build Frontend Docker image
+        run: docker build ./frontend --file ./frontend/Dockerfile --tag frontend-image:$(date +%s)
