@@ -18,14 +18,31 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Build and push Docker image to ACR
+      - name: Build Docker image locally
         run: |
-          az acr build --registry pruebaregistri --image cvae-api:${{ github.sha }} ./project/api
+          docker build -t pruebaregistri.azurecr.io/cvae-api:${{ github.sha }} ./project/api
 
-      - name: Deploy Web App for Containers
+      - name: Login to Azure Container Registry
+        run: az acr login --name pruebaregistri
+
+      - name: Push Docker image to ACR
+        run: docker push pruebaregistri.azurecr.io/cvae-api:${{ github.sha }}
+
+      - name: Create Azure Web App (if not exists)
         run: |
-          az webapp create --resource-group Prueba --plan miAppServicePlan --name <TU_WEBAPP_NAME> --deployment-container-image-name pruebaregistri.azurecr.io/cvae-api:${{ github.sha }} || echo "App already exists"
-          az webapp config container set --name miWebApp --resource-group Prueba --docker-custom-image-name <TU_ACR_NAME>.azurecr.io/cvae-api:${{ github.sha }} --docker-registry-server-url https://<TU_ACR_NAME>.azurecr.io
+          az webapp create \
+            --resource-group Prueba \
+            --plan miAppServicePlan \
+            --name <TU_WEBAPP_NAME> \
+            --deployment-container-image-name pruebaregistri.azurecr.io/cvae-api:${{ github.sha }} || echo "App already exists"
 
-      - name: Restart Web App
+      - name: Configure Web App container settings
+        run: |
+          az webapp config container set \
+            --name miWebApp \
+            --resource-group Prueba \
+            --docker-custom-image-name pruebaregistri.azurecr.io/cvae-api:${{ github.sha }} \
+            --docker-registry-server-url https://pruebaregistri.azurecr.io
+
+      - name: Restart Azure Web App
         run: az webapp restart --name miWebApp --resource-group Prueba
