@@ -54,6 +54,6 @@ He intentado el despliegue en Azure pero me ha salido un error. Se puede ver el 
 
 **LINKS WANDB**
 
-Link proyecto: https://wandb.ai/javiergarpe1979-upm/dl_mlops/overview
-Link experimento: https://wandb.ai/javiergarpe1979-upm/dl_mlops/runs/wa9rdh0v?nw=nwuserjaviergarpe1979
-Link report: https://wandb.ai/javiergarpe1979-upm/dl_mlops/reports/Report-CVAE-generaci-n-n-meros--VmlldzoxMjg3ODE5Nw 
+- Proyecto: https://wandb.ai/javiergarpe1979-upm/dl_mlops/overview
+- Experimento (run): https://wandb.ai/javiergarpe1979-upm/dl_mlops/runs/wa9rdh0v?nw=nwuserjaviergarpe1979
+- Report: https://wandb.ai/javiergarpe1979-upm/dl_mlops/reports/Report-CVAE-generaci-n-n-meros--VmlldzoxMjg3ODE5Nw 
