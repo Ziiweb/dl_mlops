@@ -52,6 +52,10 @@ Puedes hacer ctrl+click sobre `http://172.18.0.3:8001` y se abrirá el navegador
 
 He intentado el despliegue en Azure pero me ha salido un error. Se puede ver el archivo `.github/workflows/azure-deploy.yml` que he usado.
 
+**LINK GITHUB**
+
+https://github.com/Ziiweb/dl_mlops
+
 **LINKS WANDB**
 
 - Proyecto: https://wandb.ai/javiergarpe1979-upm/dl_mlops/overview
