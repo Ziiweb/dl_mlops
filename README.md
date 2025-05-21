@@ -1,6 +1,4 @@
-# dl_mlops
-
-**LOCAL**
+**CONFIGURACIÓN EN LOCAL**
 
 0. Instala docker.
 
@@ -12,8 +10,7 @@
 
 `WANDB_API_KEY=tu_token_de_login_a_wandb`
 
-
-4. Para subir el modelo a Wandb como un artefacto vamos a ejecutar `project/api/subir_modelo.py`.
+4. Para subir el modelo a Wandb como un artefacto ejecutamos `project/api/subir_modelo.py`.
 
 A continuación podemos comprobar que le modelo se ha subido a través de la interfaz de Wandb.
 
@@ -22,7 +19,7 @@ A continuación podemos comprobar que le modelo se ha subido a través de la int
     
     - `sudo docker-compose up --build`
 
-**OJO**: si no es la primera vez que ejecutas esa linea quizás sea necesario que ejecutes antes `sudo docker-compose down --volumes --remove-orphans`.
+**OJO**: si ya has ejecutado previamente ese comando, quizás sea necesario que ejecutes antes `sudo docker-compose down --volumes --remove-orphans` para hacer un reset de contenedores, redes, etc.
 
 Justo despues verás la siguiente salida:
 
@@ -50,3 +47,13 @@ api_1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 Puedes hacer ctrl+click sobre `http://172.18.0.3:8001` y se abrirá el navegador con un formulario.
 
+
+**CONFIGURACIÓN PARA AZURE**
+
+He intentado el despliegue en Azure pero me ha salido un error. Se puede ver el archivo `.github/workflows/azure-deploy.yml` que he usado.
+
+**LINKS WANDB**
+
+Link proyecto: https://wandb.ai/javiergarpe1979-upm/dl_mlops/overview
+Link experimento: https://wandb.ai/javiergarpe1979-upm/dl_mlops/runs/wa9rdh0v?nw=nwuserjaviergarpe1979
+Link report: https://wandb.ai/javiergarpe1979-upm/dl_mlops/reports/Report-CVAE-generaci-n-n-meros--VmlldzoxMjg3ODE5Nw 

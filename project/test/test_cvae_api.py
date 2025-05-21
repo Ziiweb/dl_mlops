@@ -58,13 +58,6 @@ def test_generate_image_invalid_label():
         assert response.status_code >= 400, f"Esperado error, status code: {response.status_code}"
         print(f"✅ Test para label inválido={label} PASADO.")
 
-# def test_generate_image_missing_field():
-#     """Test para petición sin campo label."""
-#     payload = {}
-#     response = requests.post(f"{API_URL}/predict", json=payload)
-#     print(f"Test generate_image_missing_field:")
-#     assert response.status_code == 422, f"Esperado error 422, status code: {response.status_code}"
-#     print(f"✅ Test para campo faltante PASADO.")
 
 if __name__ == "__main__":
     print("🧪 Verificando que el servidor esté levantado...")
@@ -72,5 +65,4 @@ if __name__ == "__main__":
     print("✅ Servidor activo. Ejecutando tests...\n")
     test_generate_image_success()
     test_generate_image_invalid_label()
-    #test_generate_image_missing_field()
     print("🎉 Todos los tests han sido ejecutados exitosamente.")

@@ -1,28 +1,3 @@
-# from pathlib import Path
-# import wandb
-
-# run = wandb.init(project="dl_mlops")
-
-# artifact_filepath = Path("./project/api/cvae_model.pth")
-
-# if not artifact_filepath.exists():
-#     raise FileNotFoundError(f"No se encontró el archivo: {artifact_filepath.resolve()}")
-
-# artifact = wandb.Artifact(
-#     name="cvae_model",
-#     type="model",
-#     description="Modelo CVAE entrenadoo",
-# )
-
-# artifact.add_file(str(artifact_filepath))
-# run.log_artifact(artifact)
-
-# run.link_artifact(
-#     artifact=artifact,
-#     target_path="javiergarpe1979-upm/dl_mlops"
-# )
-
-# run.finish()
 
 import os
 assert os.path.isfile("/home/tirengarfio/Downloads/dl_mlops/project/api/artifacts/cvae_model.pth"), "Archivo modelo no encontrado"
